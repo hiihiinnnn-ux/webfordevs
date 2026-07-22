@@ -1,0 +1,22 @@
+{
+  "name": "loci",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Loci — Local AI for developers. Discover tools, models, and guides.",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c teal,blue \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "dev:backend": "npm run dev -w backend",
+    "dev:frontend": "npm run dev -w frontend",
+    "seed": "npm run seed -w backend",
+    "build": "npm run build -w frontend",
+    "start": "npm run start -w backend",
+    "test": "npm run test -w backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
