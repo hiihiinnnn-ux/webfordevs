@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { config } from './config.js';
 import { initSchema } from './db/index.js';
 import { runSeed } from './db/seed.js';
@@ -48,6 +51,17 @@ app.use('/api/search', searchRouter);
 app.use('/api/bookmarks', bookmarksRouter);
 
 app.use('/api', notFound);
+
+// In production, serve the built React client (single-origin deployment).
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const clientDist = path.resolve(__dirname, '../../client/dist');
+if (fs.existsSync(clientDist)) {
+  app.use(express.static(clientDist));
+  app.get('*', (_req, res) => {
+    res.sendFile(path.join(clientDist, 'index.html'));
+  });
+}
+
 app.use(errorHandler);
 
 // Only start listening when run directly (not when imported by tests).
