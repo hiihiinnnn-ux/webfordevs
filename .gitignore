@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+frontend/.next/
+frontend/out/
+
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.db
+*.pyc
+.env
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
