@@ -1,0 +1,33 @@
+{
+  "name": "localai-dev-hub",
+  "version": "1.0.0",
+  "description": "An introduction to local AI for developers - catalog, search and guides API",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "NODE_ENV=test node --test tests/*.test.js",
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node src/db/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiihiinnnn-ux/webfordevs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hiihiinnnn-ux/webfordevs/issues"
+  },
+  "homepage": "https://github.com/hiihiinnnn-ux/webfordevs#readme",
+  "type": "module",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.6.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "zod": "^4.4.3"
+  }
+}

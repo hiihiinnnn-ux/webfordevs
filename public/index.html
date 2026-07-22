@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>localai.dev — Local AI for Developers</title>
+  <meta name="description" content="An introduction to local AI for developers: searchable catalog of models and tools, hands-on guides, and hardware-aware recommendations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="brand" data-link><span class="brand-mark">⚡</span> localai<span class="brand-dim">.dev</span></a>
+      <div class="nav-links">
+        <a href="/models" data-link>Models</a>
+        <a href="/tools" data-link>Tools</a>
+        <a href="/guides" data-link>Guides</a>
+        <a href="/search" data-link>Search</a>
+      </div>
+      <div class="nav-auth" id="nav-auth"></div>
+    </div>
+  </nav>
+
+  <main id="app"></main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>⚡ localai.dev — an introduction to local AI for developers.</span>
+      <span class="footer-dim">Runs on Express + SQLite FTS5. Your models, your machine, your rules.</span>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="/app.js"></script>
+</body>
+</html>
