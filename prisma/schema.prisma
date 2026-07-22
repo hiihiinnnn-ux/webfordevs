@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String     @id @default(cuid())
+  email        String     @unique
+  name         String
+  passwordHash String
+  bio          String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  bookmarks    Bookmark[]
+}
+
+model Tool {
+  id              String     @id @default(cuid())
+  slug            String     @unique
+  name            String
+  description     String
+  longDescription String?
+  category        String
+  website         String?
+  github          String?
+  tags            String
+  installCommand  String?
+  difficulty      String
+  platforms       String
+  featured        Boolean    @default(false)
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  bookmarks       Bookmark[]
+}
+
+model Model {
+  id            String     @id @default(cuid())
+  slug          String     @unique
+  name          String
+  description   String
+  family        String
+  sizeParams    String
+  quantization  String?
+  license       String
+  contextLength Int
+  tags          String
+  ollamaPull    String?
+  huggingFaceId String?
+  featured      Boolean    @default(false)
+  minRamGb      Int
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  bookmarks     Bookmark[]
+}
+
+model Guide {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  title     String
+  summary   String
+  content   String
+  level     String
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  toolId    String?
+  modelId   String?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tool      Tool?    @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  model     Model?   @relation(fields: [modelId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, toolId])
+  @@unique([userId, modelId])
+  @@index([userId])
+}
