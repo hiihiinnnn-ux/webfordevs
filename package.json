@@ -1,0 +1,17 @@
+{
+  "name": "localai-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LocalAI Hub — a developer platform introducing local AI, with a strong API backend, developer accounts, and searchable tools & models.",
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "start": "npm run start --prefix server",
+    "build": "npm run build --prefix client",
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "seed": "npm run seed --prefix server",
+    "test": "npm run test --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
